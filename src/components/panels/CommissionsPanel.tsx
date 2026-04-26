@@ -38,7 +38,7 @@ export function CommissionsPanel() {
 
   const load = async () => {
     setLoading(true);
-    try { setItems(await fetchCommissions({}) as Commission[]); } catch { toast.error("Failed to load"); }
+    try { setItems(await fetchCommissions({}) as Commission[]); } catch (err) { console.error("Failed to load commissions:", err); toast.error("Failed to load: " + (err instanceof Error ? err.message : String(err))); }
     setLoading(false);
   };
 

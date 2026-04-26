@@ -46,7 +46,7 @@ export function ProjectsPanel() {
 
   const load = async () => {
     setLoading(true);
-    try { setItems(await fetchProjects({}) as Project[]); } catch { toast.error("Failed to load"); }
+    try { setItems(await fetchProjects({}) as Project[]); } catch (err) { console.error("Failed to load projects:", err); toast.error("Failed to load: " + (err instanceof Error ? err.message : String(err))); }
     setLoading(false);
   };
 

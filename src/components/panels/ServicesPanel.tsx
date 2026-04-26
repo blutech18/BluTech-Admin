@@ -44,8 +44,9 @@ export function ServicesPanel() {
     try {
       const data = await fetchServices({});
       setItems(data as Service[]);
-    } catch {
-      toast.error("Failed to load services");
+    } catch (err) {
+      console.error("Failed to load services:", err);
+      toast.error("Failed to load services: " + (err instanceof Error ? err.message : String(err)));
     }
     setLoading(false);
   };
