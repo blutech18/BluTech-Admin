@@ -3,6 +3,7 @@ dist
 .output
 .vinxi
 .wrangler
+.nitro
 .tanstack/**
 *.local
 .env
