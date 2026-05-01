@@ -1,9 +1,18 @@
 import { create } from "zustand";
 
+type Section = "services" | "projects" | "commissions";
+
+function getSavedSection(): Section {
+  if (typeof window === "undefined") return "services";
+  const saved = localStorage.getItem("admin-section");
+  if (saved === "services" || saved === "projects" || saved === "commissions") return saved;
+  return "services";
+}
+
 interface AdminState {
   // Active section in sidebar
-  activeSection: "services" | "projects" | "commissions";
-  setActiveSection: (s: AdminState["activeSection"]) => void;
+  activeSection: Section;
+  setActiveSection: (s: Section) => void;
 
   // Modal state
   editingId: string | null;
@@ -13,8 +22,11 @@ interface AdminState {
 }
 
 export const useAdminStore = create<AdminState>((set) => ({
-  activeSection: "services",
-  setActiveSection: (activeSection) => set({ activeSection }),
+  activeSection: getSavedSection(),
+  setActiveSection: (activeSection) => {
+    if (typeof window !== "undefined") localStorage.setItem("admin-section", activeSection);
+    set({ activeSection });
+  },
   editingId: null,
   modalOpen: false,
   openModal: (id) => set({ editingId: id ?? null, modalOpen: true }),

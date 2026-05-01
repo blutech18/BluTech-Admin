@@ -13,10 +13,15 @@ const projectSchema = z.object({
   about: z.string().max(1000).default(""),
   stack: z.array(z.string().max(50)).max(10),
   gradient: z.string().max(100).default("from-sky-400 to-blue-600"),
+  image_url: z.string().min(1).optional().nullable(),
   meta: z.string().max(100).default(""),
   is_featured: z.boolean().default(false),
   is_active: z.boolean().default(true),
   sort_order: z.number().int().min(0).default(0),
+  proof_image_url: z.string().optional().nullable(),
+  client_number: z.string().max(50).default(""),
+  service_type: z.string().max(150).default(""),
+  transaction_date: z.string().max(50).default(""),
 });
 
 export type ProjectInput = z.infer<typeof projectSchema>;
@@ -26,7 +31,8 @@ export const getPublicFeaturedProjects = createServerFn({ method: "GET" }).handl
   await ensureSchema();
   const sql = getDb();
   return await sql`
-    SELECT id, title, category, year, description, about, stack, gradient, meta
+    SELECT id, title, category, year, description, about, stack, gradient, image_url, meta,
+           proof_image_url, client_number, service_type, transaction_date
     FROM projects WHERE is_active = true AND is_featured = true
     ORDER BY sort_order ASC, created_at DESC
   `;
@@ -37,7 +43,8 @@ export const getPublicProjects = createServerFn({ method: "GET" }).handler(async
   await ensureSchema();
   const sql = getDb();
   return await sql`
-    SELECT id, title, category, year, description, about, stack, gradient
+    SELECT id, title, category, year, description, about, stack, gradient, image_url,
+           proof_image_url, client_number, service_type, transaction_date
     FROM projects WHERE is_active = true
     ORDER BY sort_order ASC, created_at DESC
   `;
@@ -63,9 +70,10 @@ export const createProject = createServerFn({ method: "POST" })
     }
     const sql = getDb();
     const rows = await sql`
-      INSERT INTO projects (title, category, year, description, about, stack, gradient, meta, is_featured, is_active, sort_order)
+      INSERT INTO projects (title, category, year, description, about, stack, gradient, image_url, meta, is_featured, is_active, sort_order, proof_image_url, client_number, service_type, transaction_date)
       VALUES (${safe.title}, ${safe.category}, ${safe.year}, ${safe.description}, ${safe.about},
-              ${safe.stack}, ${safe.gradient}, ${safe.meta}, ${safe.is_featured}, ${safe.is_active}, ${safe.sort_order})
+              ${safe.stack}, ${safe.gradient}, ${safe.image_url}, ${safe.meta}, ${safe.is_featured}, ${safe.is_active}, ${safe.sort_order},
+              ${safe.proof_image_url}, ${safe.client_number}, ${safe.service_type}, ${safe.transaction_date})
       RETURNING *
     `;
     return { ok: true as const, project: rows[0] };
@@ -87,8 +95,11 @@ export const updateProject = createServerFn({ method: "POST" })
       UPDATE projects SET
         title = ${safe.title}, category = ${safe.category}, year = ${safe.year},
         description = ${safe.description}, about = ${safe.about}, stack = ${safe.stack},
-        gradient = ${safe.gradient}, meta = ${safe.meta}, is_featured = ${safe.is_featured},
-        is_active = ${safe.is_active}, sort_order = ${safe.sort_order}, updated_at = now()
+        gradient = ${safe.gradient}, image_url = ${safe.image_url}, meta = ${safe.meta},
+        is_featured = ${safe.is_featured}, is_active = ${safe.is_active},
+        sort_order = ${safe.sort_order}, proof_image_url = ${safe.proof_image_url},
+        client_number = ${safe.client_number}, service_type = ${safe.service_type},
+        transaction_date = ${safe.transaction_date}, updated_at = now()
       WHERE id = ${safe.id} RETURNING *
     `;
     if (rows.length === 0) return { ok: false as const, error: "Not found" };

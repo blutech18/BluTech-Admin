@@ -28,7 +28,8 @@ export const getPublicFeaturedProjects = createServerFn({ method: "GET" }).handl
   await ensureSchema();
   const sql = getDb();
   return await sql`
-    SELECT id, title, category, year, description, about, stack, gradient, meta
+    SELECT id, title, category, year, description, about, stack, gradient, meta,
+           proof_image_url, client_number, service_type, transaction_date
     FROM projects WHERE is_active = true AND is_featured = true
     ORDER BY sort_order ASC, created_at DESC
   `;
@@ -38,7 +39,8 @@ export const getPublicProjects = createServerFn({ method: "GET" }).handler(async
   await ensureSchema();
   const sql = getDb();
   return await sql`
-    SELECT id, title, category, year, description, about, stack, gradient
+    SELECT id, title, category, year, description, about, stack, gradient,
+           proof_image_url, client_number, service_type, transaction_date
     FROM projects WHERE is_active = true
     ORDER BY sort_order ASC, created_at DESC
   `;

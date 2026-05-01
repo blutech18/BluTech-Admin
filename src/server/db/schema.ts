@@ -59,10 +59,15 @@ export async function ensureSchema() {
     about text NOT NULL DEFAULT '',
     stack text[] NOT NULL DEFAULT '{}',
     gradient text NOT NULL DEFAULT 'from-sky-400 to-blue-600',
+    image_url text,
     meta text NOT NULL DEFAULT '',
     is_featured boolean NOT NULL DEFAULT false,
     is_active boolean NOT NULL DEFAULT true,
     sort_order int NOT NULL DEFAULT 0,
+    proof_image_url text,
+    client_number text NOT NULL DEFAULT '',
+    service_type text NOT NULL DEFAULT '',
+    transaction_date text NOT NULL DEFAULT '',
     created_at timestamptz NOT NULL DEFAULT now(),
     updated_at timestamptz NOT NULL DEFAULT now()
   )`;
@@ -81,13 +86,20 @@ export async function ensureSchema() {
     updated_at timestamptz NOT NULL DEFAULT now()
   )`;
 
-  // Add status/notes columns if they don't exist (for existing commissions table)
-  await sql`DO $$ BEGIN
-    ALTER TABLE commissions ADD COLUMN IF NOT EXISTS status text NOT NULL DEFAULT 'pending';
-    ALTER TABLE commissions ADD COLUMN IF NOT EXISTS admin_notes text;
-    ALTER TABLE commissions ADD COLUMN IF NOT EXISTS updated_at timestamptz NOT NULL DEFAULT now();
-  EXCEPTION WHEN OTHERS THEN NULL;
-  END $$`;
+  // Add columns that may not exist on older tables (each is a no-op if column exists)
+  const migrations = [
+    sql`ALTER TABLE commissions ADD COLUMN IF NOT EXISTS status text NOT NULL DEFAULT 'pending'`,
+    sql`ALTER TABLE commissions ADD COLUMN IF NOT EXISTS admin_notes text`,
+    sql`ALTER TABLE commissions ADD COLUMN IF NOT EXISTS updated_at timestamptz NOT NULL DEFAULT now()`,
+    sql`ALTER TABLE projects ADD COLUMN IF NOT EXISTS image_url text`,
+    sql`ALTER TABLE projects ADD COLUMN IF NOT EXISTS proof_image_url text`,
+    sql`ALTER TABLE projects ADD COLUMN IF NOT EXISTS client_number text NOT NULL DEFAULT ''`,
+    sql`ALTER TABLE projects ADD COLUMN IF NOT EXISTS service_type text NOT NULL DEFAULT ''`,
+    sql`ALTER TABLE projects ADD COLUMN IF NOT EXISTS transaction_date text NOT NULL DEFAULT ''`,
+  ];
+  for (const m of migrations) {
+    try { await m; } catch { /* column may already exist */ }
+  }
 
   // Rate limit tracking
   await sql`CREATE TABLE IF NOT EXISTS rate_limits (

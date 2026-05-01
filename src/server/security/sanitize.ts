@@ -10,7 +10,6 @@ export function sanitizeString(str: string): string {
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#x27;")
-    .replace(/\//g, "&#x2F;")
     .replace(/javascript:/gi, "")
     .replace(/on\w+\s*=/gi, "")
     .replace(/data:\s*text\/html/gi, "")
@@ -31,10 +30,14 @@ export function hasSqlInjection(input: string): boolean {
   return SQL_PATTERNS.some((p) => p.test(input));
 }
 
+// Fields that contain image data or raw values and should not be sanitized
+const SKIP_FIELDS = new Set(["image_url", "proof_image_url", "transaction_date"]);
+
 // Sanitize all string fields in an object
 export function sanitizeData<T extends Record<string, unknown>>(data: T): T {
   const result = { ...data };
   for (const key of Object.keys(result)) {
+    if (SKIP_FIELDS.has(key)) continue; // skip image data — only used in <img src>
     const val = result[key];
     if (typeof val === "string") {
       (result as Record<string, unknown>)[key] = sanitizeString(val);
