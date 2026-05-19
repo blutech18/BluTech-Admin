@@ -1,0 +1,279 @@
+PROJECT SEED REVIEW (PRE-SEED, DEDUPED)
+Source: D:\Clients
+Reference: blutech-admin/scripts/seed-projects.ts
+
+Excluded seeded duplicates: claimit, EduCatch-Lite, GBTAC, Mapping, MCA_Portal, PCMonitoring, UMelec
+
+1. Activities Java
+   Description: Java OOP activity set with five tasks covering classes and objects, aggregation, and practical exam implementations with answer sheets.
+   Tech Stack: Java
+
+2. AgriConnect
+   Description: Multi-role farmer marketplace and advisory system (farmers, buyers, suppliers, experts, admins) with product listings, orders, chat, feedback, and reporting dashboards.
+   Tech Stack: React, TypeScript, Vite, Tailwind CSS, SQL
+
+3. Agriculture and Food Security
+   Description: Streamlit data dashboard analyzing agriculture supply/utilization, area productivity, CPI weights, and inventory/stocks datasets for food security reporting.
+   Tech Stack: Python, Streamlit, Pandas, Altair, Jupyter Notebook, CSV/XLSX
+
+4. AppomodoroProject
+   Description: Pomodoro timer mobile app (“Appomodoro Timer”) with start/pause/stop controls, short/long breaks, task checklist, and stats/history; saves settings and progress locally.
+   Tech Stack: React Native, React Navigation (Drawer/Stack), AsyncStorage, JavaScript, Android, iOS
+
+5. arduino
+   Description: Shredder “reward” system: HC‑SR04 detects paper presence, prompts user on an I2C LCD, and on button press triggers a relay to run a water pump for 2 seconds.
+   Tech Stack: Arduino/C++, HC-SR04 Ultrasonic, I2C LCD (LiquidCrystal_I2C), Relay Module, Push Button, Pump
+
+6. Arduino_PeopleCounter
+   Description: Bidirectional people counter using dual ultrasonic sensors; tracks entry/exit count, updates an LCD, and controls a relay for automatic room light switching.
+   Tech Stack: Arduino/C++, 2x Ultrasonic Sensors, LCD (LiquidCrystal), Relay Module
+
+7. Arduino_RFID
+   Description: RFID door access control capstone: RC522 reads cards, UNO drives relay/solenoid + LCD/buzzer/LEDs, and an ESP32 posts logs/commands over Wi‑Fi to a PHP/MySQL admin dashboard (users, rooms, schedules, access logs).
+   Tech Stack: Arduino/C++, ESP32, RFID RC522, Relay/Solenoid Lock, I2C LCD, Wi-Fi/HTTP, PHP, MySQL/SQL, JavaScript, CSS
+
+9. automatic-trashcan
+   Description: Automatic trashcan lid opener: ultrasonic distance trigger drives a servo to open/hold/close the lid with a simple state machine and debounce delays.
+   Tech Stack: Arduino/C++, HC-SR04 Ultrasonic, Servo Motor
+
+10. GEMP Scholarship Portal Capstone Manuscript (Chapters 1–5)
+   Description: Documentation support for a capstone manuscript (Chapters 1–5) including ERD revisions, narrative report, and diagram write-ups for the GEMP scholarship portal.
+   Tech Stack: MS Word, Markdown, Mermaid, ERD/Database Modeling
+
+11. Chapter 3 (SSSP Manuscript + Diagrams)
+   Description: Documentation deliverables for a capstone manuscript (Chapters 1–3) plus PlantUML activity and sequence diagrams for the School Skill Sharing Platform (SSSP) workflows.
+   Tech Stack: MS Word, Plain Text, Markdown, PlantUML
+
+12. Cisco
+   Description: Cisco Packet Tracer lab simulating HQ + 2-branch connectivity with VLANs, static routing, and ACL rules to block inter-branch traffic while allowing HQ access.
+   Tech Stack: Cisco Packet Tracer, Networking, VLANs, Static Routing, ACLs
+
+13. Client5
+   Description: Database normalization activity set (1NF→3NF) with functional dependency analysis and a logical ERD deliverable (Five Star Motors case).
+   Tech Stack: Database Normalization (1NF/2NF/3NF), Functional Dependencies, ERD Modeling, MS Word
+
+14. CMPE-309-1
+   Description: LaTeX manuscript compiling solved problems in Feedback and Control Systems (transfer functions, block diagrams, signal flow graphs) with circuit diagrams.
+   Tech Stack: LaTeX, TikZ, Circuitikz, PDF
+
+15. ConditionalFlow
+   Description: Java programming activity implementing core OOP or algorithmic modules as part of course/client deliverables.
+   Tech Stack: Java
+
+16. CRM
+   Description: Microsoft Dynamics 365 CRM on‑prem implementation documentation (Windows Server + AD DS + SQL Server/SSRS) including setup steps, roles, customization, and security practices.
+   Tech Stack: Microsoft Dynamics 365 (On‑Prem), Windows Server, Active Directory, SQL Server, SSRS, Virtualization/Lab Setup
+
+17. PokeProtocol Multiplayer Battle System
+   Description: CSNETWKMP – Pokémon-Themed UDP Multiplayer Battle System.
+   Tech Stack: JavaScript, HTML, CSS
+
+18. PokeProtocol Battle Arena (UDP + WebSocket)
+   Description: PokeProtocol Battle Arena web GUI connected to a C UDP backend via a WebSocket bridge, enabling turn-based Pokémon-style network battles with handshake/attack flow and chat.
+   Tech Stack: C (UDP), JavaScript, HTML, CSS, WebSocket, CSV Data
+
+19. Data Warehouse
+   Description: Inventory & Procurement Data Warehouse + BI solution using a star schema, business intelligence SQL queries, and a Python dashboard to answer forecasting, stockout, and overstock risk questions.
+   Tech Stack: SQL (Star Schema), Python, Pandas, Dashboard/BI, Excel/CSV
+
+20. DreamHomeCDO
+   Description: A Flask-based web application for managing real estate properties, customers, appointments, and transactions across multiple branches in Cagayan de Oro.
+   Tech Stack: CSS, HTML, Python, SQL
+
+21. ERD
+   Description: Capstone manuscript deliverables for SSSP (chapters 1–3 + full manuscript export) including system modules, design specification, and documentation text/PDF.
+   Tech Stack: PDF, Plain Text, Manuscript Writing (Capstone Documentation)
+
+22. ErrandsExpressFinal-main
+   Description: Full-stack errands booking/service platform with a Laravel backend, MySQL database, and a separate frontend app; includes migration/setup tooling and an exported database schema.
+   Tech Stack: JavaScript, Vite, Tailwind CSS, SQL, Laravel, PHP, HTML
+
+23. FakeGPS
+   Description: <img src="app/src/main/res/drawable/logoheader.png" alt="Nodare GeoSec Logo" width="280"/.
+   Tech Stack: JavaScript, Firebase
+
+24. Fitness
+   Description: A desktop fitness tracking application built with Java Swing, Maven, and MySQL database. This application demonstrates object-oriented programming, data structures, algorithms, and database integration.
+   Tech Stack: Java, SQL
+
+25. FoundIt
+   Description: Web-based lost-and-found system for a school: students report/search items, admins approve postings, and a claim/verification flow tracks item status and activity.
+   Tech Stack: Next.js, React, TypeScript, Tailwind CSS, Supabase
+
+26. Gantt Chart
+   Description: Capstone planning assignment to create a complete Gantt chart (tasks, dependencies, durations, resources) for a chosen software development project.
+   Tech Stack: Project Management, Gantt Chart Planning, Microsoft Project (or equivalent)
+
+27. gfday
+   Description: Interactive “Happy Girlfriend’s Day” web experience with multiple pages (appreciation, memories, letter) and animated heart/flower UI transitions.
+   Tech Stack: Next.js, React, TypeScript, Tailwind CSS
+
+28. Heartss
+   Description: Romantic Valentine’s Day single-page web experience with multiple themed sections (open letter, timeline/journey, interactive canvas, envelopes, finale) and smooth scrolling animations.
+   Tech Stack: React, TypeScript, Vite, Tailwind CSS, shadcn/ui
+
+29. Homework
+   Description: x86_64 assembly microbenchmark comparing C vs assembly (LZ4 compression hotspot) with measured speedup and a written performance report.
+   Tech Stack: C, x86_64 Assembly, Make, Linux Tooling, Docker (optional)
+
+30. Hulam-E
+   Description: PHP/Laravel web system implementing server-rendered pages, form handling, and database-backed operations.
+   Tech Stack: JavaScript, Vite, Tailwind CSS, Laravel, PHP, HTML
+
+31. ISSYSAD
+   Description: Linux server case study for deploying an open-source helpdesk (UVdesk) with Apache/MySQL, SSH key-based access, backups, monitoring, firewall hardening, and encryption key documentation.
+   Tech Stack: Linux, Apache2, UVdesk, MySQL/MariaDB, SSH, Bash, UFW/iptables, Fail2ban
+
+32. ITISDEV Tournament Management MVP
+   Description: Course capstone web system for tournament/game operations with authentication, player and match management, game statistics encoding, analytics, and admin reporting dashboards.
+   Tech Stack: JavaScript, Node.js, Express.js, HTML, CSS
+
+33. Lab 0
+   Description: Java OOP console application for a “Modern Appliances” store, including appliance inheritance models, inventory loading/saving, brand/type filters, checkout flow, and random list generation.
+   Tech Stack: Java
+
+34. Laravel Forms and Session Activity
+   Description: Laravel forms/session activity implementing GET/POST flow on `/formtest`, CSRF-protected email submission, validation, session-persisted list management, and delete/clear actions.
+   Tech Stack: PHP, Laravel, Blade, Session Handling, JavaScript, Vite
+
+35. Lib
+   Description: “Sabnahis Library System” single-page web app for catalog, borrowing, history, and basic librarian/admin functions backed by Firebase (Firestore).
+   Tech Stack: HTML, CSS, JavaScript, Firebase (Firestore)
+
+36. Love
+   Description: Mini Love Game is a small web game built with React and Vite. Use it to explore simple game mechanics around choices, affection, and outcomes.
+   Tech Stack: React, TypeScript, Vite, Tailwind CSS
+
+37. matriq
+   Description: Multi-role operations platform with a Next.js frontend (admin/accounting/technical workflows) and Python backend services for sample intake, validation/tracking, reporting, and role-based access flows.
+   Tech Stack: Next.js, React, TypeScript, Tailwind CSS, Python Backend API
+
+38. MCO2_SmartSpend-main
+   Description: Android “SmartSpend” budgeting/expense tracker app with analytics (charts), categories, and media/receipt gallery features.
+   Tech Stack: Android (Java), Gradle (Kotlin DSL), MPAndroidChart, Glide, Material Components
+
+39. menteryo
+   Description: Capstone manuscript for a Smart Cemetery Navigation and Monitoring Platform (digitalized burial records + GPS/map-based grave search with multi-platform access).
+   Tech Stack: Next.js, React, MySQL, Google Maps API (documented architecture/spec)
+
+40. Military
+   Description: A system for tracking, monitoring, and managing military firearms for the 10th Regional Community Defense Group.
+   Tech Stack: React, TypeScript, Vite, Tailwind CSS, Supabase, SQL
+
+41. MotorPrototype
+   Description: A comprehensive HR management system built with React, TypeScript, and modern web technologies. This application provides time tracking, leave management, payroll processing, and approval workflows for employees, managers, and HR personnel.
+   Tech Stack: React, TypeScript, Vite, Tailwind CSS
+
+42. MALAL MS Access Audit Toolkit
+   Description: MS Access database audit/debug toolkit for `MALAL.accdb` using Python + ODBC to inspect schema, queries/forms, verify results, and generate fix/audit reports.
+   Tech Stack: MS Access (.accdb), Python, pyodbc (ODBC)
+
+43. MSEUF
+   Description: AI-powered university library portal for MSEUF with public catalog browsing, Google Drive PDF sync, Convex-backed librarian dashboard, and ROSe chatbot integration for book search/help.
+   Tech Stack: Next.js, React, TypeScript, Tailwind CSS, Convex, Google Gemini AI
+
+44. Philippines Calendar 2025 Webpage
+   Description: Static “Philippines Calendar 2025” webpage (multi-month calendar layout) built as an HTML activity output.
+   Tech Stack: HTML
+
+45. ORDERING SYSTEM
+   Description: Database project with schema creation, data loading scripts, and analytical query reports.
+   Tech Stack: Python, SQL
+
+46. ORDERING SYSTEM AUG 21
+   Description: Database project with schema creation, data loading scripts, and analytical query reports.
+   Tech Stack: Python, SQL
+
+47. OUTZR Project
+   Description: Device-repair marketplace system combining an Expo React Native client and a Django REST API backend for request/quote/booking workflows, payments, chat, reviews, and notifications.
+   Tech Stack: React Native, Expo, TypeScript, Django, Django REST Framework, PostgreSQL
+
+48. paradahan-app
+   Description: Campus ride-hailing/transport web app with student and driver role flows, booking and active-ride screens, ride history/ratings, profile/settings, and admin management pages.
+   Tech Stack: Next.js, React, TypeScript, Tailwind CSS, Role-Based Auth
+
+49. Pharmacy
+   Description: Windows desktop pharmacy management system (C#/.NET) with forms for inventory/medicine workflows, dashboard views, and database-connected operations.
+   Tech Stack: .NET/C#, Windows Forms, SQL
+
+50. PHP Xampp
+   Description: PHP server-side form validation lab (`form.php`) covering POST handling, input sanitization, email validation, sticky fields, and inline error messaging on local XAMPP.
+   Tech Stack: PHP, HTML, Form Validation
+
+51. Portfolio
+   Description: Simple personal portfolio webpage (profile info + sections) built as a basic HTML/CSS activity.
+   Tech Stack: HTML, CSS
+
+52. Preloved
+   Description: Preloved clothing sales/inventory manager with seller accounts, products, customers, and sales tracking; generates printable/PDF reports and stores data in Supabase.
+   Tech Stack: React, TypeScript, Vite, Tailwind CSS, Supabase, Zustand, React Router, Zod, jsPDF
+
+53. Project 2 Video On Demand
+   Description: Database project for a Video On Demand domain (schema design → PostgreSQL DDL, CSV population script, ERD, and SQL reports/queries across phases).
+   Tech Stack: SQL (PostgreSQL), Python (psycopg2), ERD/Data Modeling
+
+54. PTACT3-BY-MARTIN-ORE
+   Description: Packet Tracer networking machine problem for “CISCO MANIACS” using VLSM addressing, RIPv2, DHCP/DNS/TFTP/FTP services, wireless setup, and remote access verification.
+   Tech Stack: Cisco Packet Tracer, VLSM/Subnetting, RIPv2, DHCP, DNS, TFTP/FTP, Wireless
+
+55. python-run
+   Description: This project contains Python scripts for analyzing and visualizing water distribution networks across multiple clusters.
+   Tech Stack: Python
+
+56. quick-print
+   Description: Quickprint — QuickPrint — Print Shop Management System (Hono + MySQL + AngularJS).
+   Tech Stack: JavaScript, SQL, HTML, CSS
+
+57. RestaurantApp
+   Description: A comprehensive Restaurant Management System built with .NET MAUI and MySQL/MariaDB backend, featuring a modern white-themed UI designed for desktop and tablet use with advanced role-based access control and complete order workflow management.
+   Tech Stack: .NET/C#, SQL
+
+58. Rocket
+   Description: Static “SASI – Rocket Control Dashboard” UI mockup built as a single-page HTML/CSS dashboard layout.
+   Tech Stack: HTML, CSS
+
+59. RRL
+   Description: Review of Related Literature draft compiling referenced studies for an AI‑enhanced credit risk assessment manuscript (BancNet + cloud banking context).
+   Tech Stack: Academic Writing, Citations/References, Literature Review
+
+60. SaintLawrenceHospital
+   Description: Desktop hospital management system for patient admission and records, including dashboards, patient visit forms, user management, and MySQL-backed data modules.
+   Tech Stack: .NET/C#, Windows Forms, MySQL, SQL
+
+61. schoolmgtsystem-main
+   Description: A comprehensive web-based school management system built with Next.js, TypeScript, and MySQL. This system provides role-based access control for administrators, deans, program coordinators, instructors, and students to manage academic operations.
+   Tech Stack: Next.js, React, TypeScript, Tailwind CSS, MySQL
+
+62. SEB Configuration Decryption Utility
+   Description: Your Midterm Exam.seb file is a Safe Exam Browser config. It is password-protected and encrypted with industry-standard crypto (AES-256 + HMAC, PBKDF2). The password cannot be bypassed or recovered from the file — you need the actual password.
+   Tech Stack: Python
+
+63. shop_lendr3
+   Description: Flutter marketplace app for university students to buy/sell/rent/borrow items with verification, item listings, in-app messaging, borrowing workflow, and Firebase-backed notifications/storage.
+   Tech Stack: Flutter (Dart), Firebase Auth/Firestore/Storage/FCM, Provider, GoRouter
+
+64. Sow
+   Description: PHP + MySQL sow/farm monitoring web app for tracking sow and pig records, health information, schedules, interventions, reports, and role-based admin/user access.
+   Tech Stack: PHP, MySQL, SQL, HTML, CSS, JavaScript
+
+65. SSSP
+   Description: Capstone manuscript draft for the School Skill Sharing Platform (SSSP) including chapters 1–3 and revised document compilation.
+   Tech Stack: MS Word, Plain Text, Capstone Documentation
+
+66. Tinkercad Circuits — Boolean Logic Gate Simulation
+   Description: Tinkercad Circuits digital logic simulation task implementing \(F = AB'(B'C + BC') + ABC\) and validating the output LED is ON (logic-gates wiring; no code required).
+   Tech Stack: Tinkercad Circuits, Digital Logic Gates, Boolean Algebra (no programming language for this task)
+
+67. TireXpressMain
+   Description: Tire shop service + e-commerce mobile app (customer/employee/admin roles) covering product browsing, cart/checkout, appointment booking, inventory, QR workflows, reports/analytics, and system logs.
+   Tech Stack: React Native, Expo, Firebase (Auth/Firestore/Storage), JavaScript, React Navigation
+
+68. TravelPoint VBA Interactive Deck Automation
+   Description: VBA-enabled PowerPoint macro project (“travelpoint.com” interactive deck) plus automation scripts to audit/fix navigation, forms, and slide wiring across 150+ slides.
+   Tech Stack: PowerPoint (.pptm), VBA, VBScript, Python
+
+69. Zip Files
+   Description: Zipped deployment source for a Laravel web app (“Unitalk”) featuring chat/video-call workflows, realtime events, and scheduled background commands.
+   Tech Stack: PHP, Laravel 9, Laravel WebSockets, Sanctum, JavaScript, Laravel Mix, Pusher/Echo, Twilio
+
+NOTE: Review generic descriptions and Unknown stacks before seeding.

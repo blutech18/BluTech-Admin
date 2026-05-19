@@ -7,6 +7,8 @@
  */
 import { neon } from "@neondatabase/serverless";
 import { config } from "dotenv";
+import fs from "node:fs";
+import path from "node:path";
 
 config();
 
@@ -40,7 +42,7 @@ interface Project {
   is_featured: boolean;
 }
 
-const projects: Project[] = [
+const baseProjects: Project[] = [
   {
     title: "Hopelink v2",
     category: "Web App",
@@ -165,8 +167,8 @@ const projects: Project[] = [
     title: "ClaimIT",
     category: "Mobile App",
     year: "2025",
-    description: "Expo-based cross-platform mobile application with file-based routing.",
-    about: "Built with create-expo-app for cross-platform development targeting Android, iOS, and web from a single codebase.",
+    description: "Lost-and-found style mobile app with authentication, feed/report flows, chats, notifications, and profile management.",
+    about: "Expo Router React Native app demonstrating guarded routes, context-based auth/theme state, AsyncStorage session persistence, and bottom-nav workflows for feed/report/chats/notifications/profile.",
     stack: ["TypeScript", "JavaScript", "Expo", "React Native"],
     gradient: GRADIENTS[1],
     is_featured: false,
@@ -185,8 +187,8 @@ const projects: Project[] = [
     title: "AugustOne",
     category: "Web App",
     year: "2025",
-    description: "A TypeScript-based web project built with modern frontend tooling.",
-    about: "Web application built with TypeScript, CSS, and JavaScript. Deployed on Vercel.",
+    description: "Frontend web project focused on TypeScript-driven UI implementation and deployment-ready build output.",
+    about: "Browser-based TypeScript/CSS/JavaScript application structured for modern deployment workflows (including Vercel hosting).",
     stack: ["TypeScript", "CSS", "JavaScript"],
     gradient: GRADIENTS[5],
     is_featured: false,
@@ -195,8 +197,8 @@ const projects: Project[] = [
     title: "Hearts",
     category: "Web App",
     year: "2026",
-    description: "A web project built with Vite, React, shadcn-ui, and Tailwind CSS.",
-    about: "Modern React application with shadcn-ui component library and Tailwind CSS for styling. Built with Vite for fast development.",
+    description: "Interactive React web experience with custom sections, modern UI components, and animation-focused presentation.",
+    about: "Vite + React project using shadcn-ui and Tailwind CSS to deliver a polished, responsive frontend with reusable component patterns.",
     stack: ["TypeScript", "React", "Vite", "shadcn-ui", "Tailwind CSS"],
     gradient: GRADIENTS[6],
     is_featured: false,
@@ -205,8 +207,8 @@ const projects: Project[] = [
     title: "ITISDEV MVPc",
     category: "Web App",
     year: "2026",
-    description: "Application development project built with JavaScript and Handlebars templating.",
-    about: "Course project for ITISDEV using server-rendered Handlebars templates with JavaScript, HTML, and CSS.",
+    description: "ITISDEV course MVP using server-rendered Handlebars pages for multi-view web workflows.",
+    about: "JavaScript web project structured around Handlebars templating, with HTML/CSS presentation layers and route-based rendered pages for coursework deliverables.",
     stack: ["JavaScript", "HTML", "Handlebars", "CSS"],
     gradient: GRADIENTS[7],
     is_featured: false,
@@ -215,8 +217,8 @@ const projects: Project[] = [
     title: "LibraryMS",
     category: "Web App",
     year: "2025",
-    description: "Library management system built with React, shadcn-ui, and Tailwind CSS.",
-    about: "A library management application using Vite, TypeScript, React, and the shadcn-ui component library for a polished UI.",
+    description: "Library management frontend for organizing catalog and user-facing library operations in a modern React interface.",
+    about: "Vite + TypeScript + React application with shadcn-ui and Tailwind CSS for responsive library management screens and reusable UI modules.",
     stack: ["TypeScript", "React", "Vite", "shadcn-ui", "Tailwind CSS"],
     gradient: GRADIENTS[0],
     is_featured: false,
@@ -235,8 +237,8 @@ const projects: Project[] = [
     title: "GBTAC",
     category: "Web App",
     year: "2026",
-    description: "A JavaScript and Python full-stack application.",
-    about: "Full-stack project combining JavaScript frontend with Python backend services.",
+    description: "Full-stack energy/operations analytics platform with dashboard visualizations and API-driven reporting workflows.",
+    about: "Next.js frontend and Python backend services (router-based endpoints) supporting graph dashboards, reports, auth flows, and monitoring-related data operations.",
     stack: ["JavaScript", "Python", "CSS"],
     gradient: GRADIENTS[4],
     is_featured: false,
@@ -256,7 +258,7 @@ const projects: Project[] = [
     category: "Backend",
     year: "2025",
     description: "A Python-based payroll computation system.",
-    about: "Backend payroll system handling employee salary calculations, deductions, and reporting. Built entirely in Python.",
+    about: "Backend payroll processing project for salary computation, deductions, and report generation pipelines implemented in Python.",
     stack: ["Python"],
     gradient: GRADIENTS[7],
     is_featured: false,
@@ -265,16 +267,157 @@ const projects: Project[] = [
     title: "Umelec",
     category: "Mobile App",
     year: "2025",
-    description: "A native Android application built with Kotlin.",
-    about: "Native Android project using Kotlin for the core application logic with some JavaScript integration.",
-    stack: ["Kotlin", "JavaScript"],
+    description: "Android e-voting and election management app for voter registration, ballot casting, tally viewing, and admin election setup.",
+    about: "Native Kotlin Android system backed by Firebase services (Auth, Firestore, Storage, Functions) with voter/leader roles, vote integrity controls, and automated election reporting.",
+    stack: ["Kotlin", "Firebase Auth", "Firestore", "Firebase Storage", "Cloud Functions"],
     gradient: GRADIENTS[5],
+    is_featured: false,
+  },
+  {
+    title: "GEMP Scholarship Portal Capstone Manuscript (Chapters 1–5)",
+    category: "Documentation",
+    year: "2025",
+    description: "Capstone manuscript support (Chapters 1–5) with ERD revisions, narrative report, and diagram write-ups for the GEMP scholarship portal.",
+    about: "Documentation deliverables for GEMP: chapter drafts, ERD descriptions and revisions, functional decomposition diagram notes, conceptual framework figures, and narrative report assets.",
+    stack: ["MS Word", "Markdown", "Mermaid", "ERD Modeling"],
+    gradient: GRADIENTS[7],
+    is_featured: false,
+  },
+  {
+    title: "Chapter 3 (SSSP Manuscript + Diagrams)",
+    category: "Documentation",
+    year: "2025",
+    description: "Capstone manuscript documentation (Chapters 1–3) plus PlantUML activity and sequence diagrams for SSSP workflows.",
+    about: "Includes Chapter 3 methods/materials write-up and simplified PlantUML diagrams (activity + sequence) for learner/tutor/admin flows in the School Skill Sharing Platform (SSSP).",
+    stack: ["MS Word", "Plain Text", "Markdown", "PlantUML"],
+    gradient: GRADIENTS[6],
+    is_featured: false,
+  },
+  {
+    title: "Cisco — Branch Office Connectivity (Packet Tracer)",
+    category: "Networking Lab",
+    year: "2025",
+    description: "Packet Tracer simulation of HQ + branch topology using VLANs, static routes, and ACLs to restrict inter-branch traffic.",
+    about: "Implements VLAN10/20/30 across three switches, static routing across three routers, and ACL 100 at HQ to deny Branch1↔Branch2 while allowing branch-to-HQ connectivity; includes cabling map, IP plan, and verification commands.",
+    stack: ["Cisco Packet Tracer", "VLANs", "Static Routing", "ACLs", "Subnetting"],
+    gradient: GRADIENTS[1],
+    is_featured: false,
+  },
+  {
+    title: "Tinkercad Circuits — Boolean Logic Gate Simulation",
+    category: "Digital Logic",
+    year: "2026",
+    description: "Tinkercad Circuits logic-gates wiring to simulate F = AB'(B'C + BC') + ABC and validate the output LED is ON.",
+    about: "Digital logic simulation in Tinkercad Circuits using boolean algebra and basic gates; this task is wiring-based (no programming language required).",
+    stack: ["Tinkercad Circuits", "Digital Logic Gates", "Boolean Algebra"],
+    gradient: GRADIENTS[3],
     is_featured: false,
   },
 ];
 
+function toKey(s: string) {
+  return s.trim().toLowerCase();
+}
+
+function guessCategory(stack: string[], title: string) {
+  const t = title.toLowerCase();
+  const s = stack.map((x) => x.toLowerCase()).join(" ");
+  const isWebStack =
+    s.includes("next.js") ||
+    s.includes("react") ||
+    s.includes("vite") ||
+    s.includes("laravel") ||
+    s.includes("php") ||
+    s.includes("svelte") ||
+    s.includes("angular") ||
+    s.includes("html");
+  if (s.includes("cisco packet tracer") || s.includes("vlans") || s.includes("ripv2") || t.includes("packet tracer")) return "Networking Lab";
+  if (
+    s.includes("ms word") ||
+    s.includes("manuscript") ||
+    s.includes("plantuml") ||
+    s.includes("latex") ||
+    s.includes("academic writing") ||
+    s.includes("citations/references") ||
+    s.includes("literature review") ||
+    s.includes("powerpoint") ||
+    s.includes("vba")
+  )
+    return "Documentation";
+  if (s.includes("tinkercad")) return "Digital Logic";
+  if (s.includes("arduino")) return "Embedded Systems";
+  if (s.includes("android") || s.includes("kotlin") || s.includes("react native") || s.includes("expo")) return "Mobile App";
+  if (s.includes(".net") || s.includes("maui")) return "Desktop App";
+  if (s.includes("python") && !s.includes("django") && !s.includes("flask") && !isWebStack) return "Backend";
+  return "Web App";
+}
+
+function guessYear(stack: string[], title: string) {
+  const t = title.toLowerCase();
+  const s = stack.map((x) => x.toLowerCase()).join(" ");
+  if (t.includes("tinkercad")) return "2026";
+  if (t.includes("packet tracer") || s.includes("packet tracer")) return "2025";
+  return "2025";
+}
+
+function parseReviewFile(): Project[] {
+  const reviewPath = path.join(process.cwd(), "scripts", "project-seed-review.txt");
+  if (!fs.existsSync(reviewPath)) return [];
+  const raw = fs.readFileSync(reviewPath, "utf8");
+  const lines = raw.split(/\r?\n/);
+  const parsed: Project[] = [];
+
+  for (let i = 0; i < lines.length; i++) {
+    const m = /^\d+\.\s+(.*)$/.exec(lines[i]);
+    if (!m) continue;
+
+    const title = m[1].trim();
+    const descLine = lines[i + 1] ?? "";
+    const stackLine = lines[i + 2] ?? "";
+
+    const descMatch = /^\s*Description:\s*(.*)$/.exec(descLine);
+    const stackMatch = /^\s*Tech Stack:\s*(.*)$/.exec(stackLine);
+    if (!descMatch || !stackMatch) continue;
+
+    const description = descMatch[1].trim().replace(/\s+\.$/, ".");
+    const stack = stackMatch[1]
+      .split(",")
+      .map((x) => x.trim())
+      .filter(Boolean);
+
+    const category = guessCategory(stack, title);
+    const year = guessYear(stack, title);
+
+    parsed.push({
+      title,
+      category,
+      year,
+      description,
+      about: description,
+      stack,
+      gradient: GRADIENTS[parsed.length % GRADIENTS.length],
+      is_featured: false,
+    });
+  }
+
+  return parsed;
+}
+
+const projects: Project[] = (() => {
+  const fromReview = parseReviewFile();
+  const map = new Map<string, Project>();
+
+  // Start from review so we truly seed "all" entries.
+  for (const p of fromReview) map.set(toKey(p.title), p);
+
+  // Override with curated base entries when title collides.
+  for (const p of baseProjects) map.set(toKey(p.title), p);
+
+  return Array.from(map.values());
+})();
+
 async function seed() {
-  console.log("🌱 Seeding projects from GitHub repos...\n");
+  console.log("🌱 Seeding projects from local seed list...\n");
 
   // Ensure table exists
   await sql`CREATE TABLE IF NOT EXISTS projects (
@@ -313,7 +456,9 @@ async function seed() {
   console.log(`\n✅ Seeded ${projects.length} projects successfully!`);
 }
 
-seed().catch((err) => {
+try {
+  await seed();
+} catch (err) {
   console.error("Seed failed:", err);
   process.exit(1);
-});
+}
